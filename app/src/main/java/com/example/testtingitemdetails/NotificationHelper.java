@@ -7,20 +7,21 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 
+import androidx.core.app.NotificationChannelCompat;
 import androidx.core.app.NotificationCompat;
 
 public class NotificationHelper
 {
    private static final int NOTIFICATION_ID = 1;
-   private static final String CHANNEL_ID = "TestChannel";
+   private static final String CHANNEL_ID = "TestNotificationChannel";
 
    public void showNotification(Context context, String title, String text)
    {
        Intent intent = new Intent(context, MainActivity.class);
-       PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+       PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_MUTABLE);
 
        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
-               .setSmallIcon(R.drawable.ic_spade)
+               .setSmallIcon(R.drawable.ic_heart)
                .setContentTitle(title)
                .setContentText(text)
                .setAutoCancel(true)
@@ -28,14 +29,15 @@ public class NotificationHelper
 
        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
-
        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
        {
-           NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "TestName", NotificationManager.IMPORTANCE_DEFAULT);
-           notificationManager.createNotificationChannel(channel);
+           NotificationChannel notificationChannel =
+                   new NotificationChannel(CHANNEL_ID, "Test Notification", NotificationManager.IMPORTANCE_DEFAULT);
+           notificationManager.createNotificationChannel(notificationChannel);
        }
 
        notificationManager.notify(NOTIFICATION_ID, builder.build());
    }
+
 
 }

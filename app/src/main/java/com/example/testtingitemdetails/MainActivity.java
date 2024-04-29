@@ -39,9 +39,10 @@ public class MainActivity extends AppCompatActivity
     private int[] images;
     private ViewPager2Adapter viewPager2Adapter;
     private ViewPager viewPager2;
-    private MaterialButton button, btnDialog;
+    private MaterialButton button, btnDialog, btn_green, btn_red;
     private boolean isTrue;
     private  PinDialogHelper pinDialogHelper;
+    private CustomToast toast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -74,7 +75,11 @@ public class MainActivity extends AppCompatActivity
         viewPager2 = findViewById(R.id.vp2);
         button = findViewById(R.id.btnShowNotification);
         btnDialog = findViewById(R.id.btnShowCustomDiaolog);
-        images  = new int[]{R.drawable.ic_club, R.drawable.ic_diamond, R.drawable.ic_heart, R.drawable.ic_spade};
+        images  = new int[]{R.drawable.ic_club, R.drawable.ic_diamond,
+                R.drawable.ic_heart, R.drawable.ic_spade};
+        btn_green = findViewById(R.id.btnGreen);
+        btn_red = findViewById(R.id.btnRed);
+        toast = new CustomToast();
     }
 
     private void populateRV()
@@ -89,9 +94,18 @@ public class MainActivity extends AppCompatActivity
                 LinearLayoutManager.HORIZONTAL, false));
     }
 
+    private static Bundle getData()
+    {
+        Bundle bundle = new Bundle();
+        bundle.putString("name", CardStaticModel.getName());
+        bundle.putInt("age", CardStaticModel.getAge());
+        return bundle;
+    }
+
     private void setListener()
     {
         button.setOnClickListener(click -> {
+            toast.myToast(this, R.drawable.ic_heart, CardStaticModel.getName(), String.valueOf(CardStaticModel.getAge()), getResources().getColor(R.color.white));
             NotificationHelper notificationHelper = new NotificationHelper();
             notificationHelper.showNotification(MainActivity.this, "Test Notif", button.getText().toString());
         });
@@ -102,11 +116,13 @@ public class MainActivity extends AppCompatActivity
             isTrue = pinDialogHelper.showDialog();
         });
 
-        if(isTrue)
-        {
-            Toast.makeText(this, pinDialogHelper.getPinInput(), Toast.LENGTH_SHORT).show();
-        }
+        btn_green.setOnClickListener(click -> {
+            toast.myToast(this, R.drawable.ic_heart, "Success", "green", getResources().getColor(R.color.green_light));
+        });
 
+        btn_red.setOnClickListener(click -> {
+            toast.myToast(this, R.drawable.ic_heart, "Failed", "red", getResources().getColor(R.color.red_light));
+        });
     }
 
     private void setChip_group()

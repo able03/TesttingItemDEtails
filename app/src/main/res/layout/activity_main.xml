@@ -116,6 +116,39 @@
             android:layout_marginHorizontal="10dp"
             android:layout_marginBottom="6dp"
             android:textColor="@color/black"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp"
+            android:layout_marginHorizontal="10dp">
+
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Green"
+                app:cornerRadius="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/green_light"
+                android:id="@+id/btnGreen"/>
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Red"
+                app:cornerRadius="5dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/red_light"
+                android:id="@+id/btnRed"/>
+
+
+        </LinearLayout>
+
+
+
+
     </LinearLayout>
 
     
