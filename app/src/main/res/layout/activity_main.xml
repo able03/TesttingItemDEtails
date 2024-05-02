@@ -99,10 +99,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/btnShowNotification"
             android:text="Show Notification"
-            android:backgroundTint="@color/white"
-            app:cornerRadius="5dp"
-            android:layout_margin="10dp"
-            android:textColor="@color/black"/>
+            style="@style/ButtonStyle"
+            android:layout_margin="10dp" />
 
 
 
@@ -147,7 +145,24 @@
         </LinearLayout>
 
 
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnJumpToDrawerLayout"
+            app:cornerRadius="5dp"
+            style="@style/ButtonStyle"
+            android:layout_marginHorizontal="10dp"
+            android:text="Drawer Layout"/>
 
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnJumpToClipAt"
+            app:cornerRadius="5dp"
+            style="@style/ButtonStyle"
+            android:layout_marginHorizontal="10dp"
+            android:text="Clipboard"/>
 
     </LinearLayout>
 

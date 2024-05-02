@@ -1,6 +1,7 @@
 package com.example.testtingitemdetails;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -39,8 +41,7 @@ public class MainActivity extends AppCompatActivity
     private int[] images;
     private ViewPager2Adapter viewPager2Adapter;
     private ViewPager viewPager2;
-    private MaterialButton button, btnDialog, btn_green, btn_red;
-    private boolean isTrue;
+    private MaterialButton button, btnDialog, btn_green, btn_red, btn_drawer_layout, btn_clipboard;
     private  PinDialogHelper pinDialogHelper;
     private CustomToast toast;
 
@@ -80,6 +81,8 @@ public class MainActivity extends AppCompatActivity
         btn_green = findViewById(R.id.btnGreen);
         btn_red = findViewById(R.id.btnRed);
         toast = new CustomToast();
+        btn_drawer_layout = findViewById(R.id.btnJumpToDrawerLayout);
+        btn_clipboard = findViewById(R.id.btnJumpToClipAt);
     }
 
     private void populateRV()
@@ -94,14 +97,6 @@ public class MainActivity extends AppCompatActivity
                 LinearLayoutManager.HORIZONTAL, false));
     }
 
-    private static Bundle getData()
-    {
-        Bundle bundle = new Bundle();
-        bundle.putString("name", CardStaticModel.getName());
-        bundle.putInt("age", CardStaticModel.getAge());
-        return bundle;
-    }
-
     private void setListener()
     {
         button.setOnClickListener(click -> {
@@ -111,9 +106,7 @@ public class MainActivity extends AppCompatActivity
         });
 
         btnDialog.setOnClickListener(click -> {
-//            showCustomDialog();
             pinDialogHelper = new PinDialogHelper(this);
-            isTrue = pinDialogHelper.showDialog();
         });
 
         btn_green.setOnClickListener(click -> {
@@ -123,6 +116,15 @@ public class MainActivity extends AppCompatActivity
         btn_red.setOnClickListener(click -> {
             toast.myToast(this, R.drawable.ic_heart, "Failed", "red", getResources().getColor(R.color.red_light));
         });
+
+        btn_drawer_layout.setOnClickListener(click -> {
+            startActivity(new Intent(MainActivity.this, NavigationDrawerActivity.class));
+        });
+
+        btn_clipboard.setOnClickListener(click -> {
+            startActivity(new Intent(MainActivity.this, ClipboardActivity.class));
+        });
+
     }
 
     private void setChip_group()

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ClipboardActivity">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Text to Copy"
+        android:textSize="38sp" />
+
+
+    <EditText
+        android:id="@+id/etTextToCopy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter text"
+        android:inputType="text"
+        android:textSize="24sp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCopy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Copy"
+        app:cornerRadius="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Text to Copy"
+        android:layout_marginTop="20dp"
+        android:id="@+id/tvPaste"
+        android:textSize="24sp" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnPaste"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Paste"
+        app:cornerRadius="5dp" />
+
+</LinearLayout>

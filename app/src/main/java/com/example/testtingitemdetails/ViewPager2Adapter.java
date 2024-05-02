@@ -15,7 +15,6 @@ import java.util.Objects;
 
 public class ViewPager2Adapter extends PagerAdapter
 {
-
     private Context context;
     private int[] images;
     private LayoutInflater inflater;
